@@ -1,0 +1,44 @@
+{
+	"id": "d32725e7-1ea8-4657-becd-1293b06eef04",
+	"name": "Admin UnitTest",
+	"values": [
+		{
+			"key": "id_user",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Username",
+			"value": "Admin",
+			"enabled": true
+		},
+		{
+			"key": "Password",
+			"value": "AdminPassword",
+			"enabled": true
+		},
+		{
+			"key": "id_user_created",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Token",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Email",
+			"value": "Admin@root.mail",
+			"enabled": true
+		},
+		{
+			"key": "id_badge",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-03-12T12:24:05.850Z",
+	"_postman_exported_using": "Postman/7.36.5"
+}

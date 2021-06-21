@@ -1,0 +1,29 @@
+{
+  "name": "pp6-forum-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "apidoc": "apidoc -i app/Controllers/ -o apidoc/ && xdg-open ./apidoc/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marceau-maubert/pp6-forum.git"
+  },
+  "author": "Marceau MAUBERT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marceau-maubert/pp6-forum/issues"
+  },
+  "homepage": "https://github.com/marceau-maubert/pp6-forum#readme",
+  "apidoc": {
+    "name": "pp6-forum-api",
+    "version": "0.0.1",
+    "title": "La Plateforum_ API",
+    "url": "https://api.laplateforum.fr",
+    "sampleUrl": "https://api.laplateforum.fr"
+  },
+  "devDependencies": {
+    "apidoc": "^0.26.0"
+  }
+}
