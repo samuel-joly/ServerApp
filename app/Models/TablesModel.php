@@ -8,8 +8,8 @@ class TablesModel extends Model{
     protected  $custom = [
     'DSN'      => '',
     'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => '',
+    'username' => 'serverApp',
+    'password' => 'R56t89lk!',
     'database' => '',
     'DBDriver' => 'MySQLi',
     'DBPrefix' => '',
