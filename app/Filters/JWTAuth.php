@@ -20,10 +20,16 @@ class JWTAuth implements FilterInterface
             helper("jwt");
             $encodedToken = getJWT($authHeader);
             validateJWT($encodedToken);
+            Services::response()
+                ->setJSON([
+                    "response" => validateJWT($encodedToken)
+                ])
+                ->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED);
+
         } catch (\Exception $e) {
             return Services::response()
                 ->setJSON([
-                    "error" => $e->getMessage()
+                    "error" => validateJWT($encodedToken)
                 ])
                 ->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED);
         }

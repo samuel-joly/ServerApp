@@ -10,25 +10,25 @@ function getJWT($req)
     if(is_null($req)) {
         throw new Exception('Missing or invalid request token');
     }
-
     return explode(" ", $req)[1];
 }
 
 function validateJWT($encodedToken)
 {
     $key = Services::getSecretKey();
+    return $key;
     $decodedToken = JWT::decode($encodedToken, $key, ['HS256']);
     $users = new UsersModel();
-    $user = $users->getUserByEmail($decodedToken->email);
+    $user = $users->getUserByName($decodedToken->username);
 }
 
-function createJWT(string $email, int $role=0)
+function createJWT(string $username)
 {
     $createdAt = time();
     $timeToLive = getenv('JWT_TIME_TO_LIVE');
     $expireAt = $createdAt + $timeToLive;
     $payload = [
-        'email' => $email,
+        'username' => $username,
         'exp'   => $expireAt,
     ];
 
@@ -42,7 +42,7 @@ function getTokenInfo($req)
     $key = Services::getSecretKey();
     $decodedToken = JWT::decode($encodedToken, $key, ['HS256']);
     $users = new UsersModel();
-    $user = $users->getUserByEmail($decodedToken->email);
-    return [$user["id"], $user["role"]];
+    $user = $users->getUserByName($decodedToken->username);
+    return $user["id"];
 }
 

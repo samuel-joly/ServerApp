@@ -13,9 +13,7 @@ class UsersModel extends Model
 
     protected $allowedFields = [
         'username',
-        'email',
         'password',
-        'avatar',
     ];
 
     protected $beforeInsert = ["beforeInsert"];
@@ -56,10 +54,10 @@ class UsersModel extends Model
         }
     }
 
-    public function getUserByEmail(string $email)
+    public function getUserByName(string $username)
     {
         return $this->asArray()
-                    ->where(["email"=>$email])
+                    ->where(["username"=>$username])
                     ->first();
     }
 }

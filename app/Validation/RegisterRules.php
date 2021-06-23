@@ -20,7 +20,7 @@ class RegisterRules
     {
         try {
             $model = new UsersModel();
-            $password = $model->getUserByEmail($data["email"])["password"];
+            $password = $model->getUserByName($data["username"])["password"];
             return password_verify($data["password"], $password);
         } catch (Exception $e) {
             return false;

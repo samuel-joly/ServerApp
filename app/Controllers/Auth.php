@@ -24,7 +24,6 @@ class Auth extends BaseController
 	 * @apiGroup Authentification
 	 *
 	 * @apiParam {String} username        The new user's name
-	 * @apiParam {String} email           The new user's e-mail
 	 * @apiParam {String} password        The new user's password
 	 * @apiParam {String} passwordConfirm The new user's password confirmation
 	 *
@@ -34,7 +33,6 @@ class Auth extends BaseController
 	{
 		$rules = [
 			"username"        => "min_length[3]|max_length[30]|is_unique[user.username]",
-			"email"           => "valid_email|min_length[6]|max_length[50]|is_unique[user.email]",
 			"password"        => "min_length[6]|max_length[30]",
 			"passwordConfirm" => "min_length[6]|max_length[30]|password_confirm[user.password,user.passwordConfirm]",
 		];
@@ -46,7 +44,7 @@ class Auth extends BaseController
 		$model = new UsersModel();
 		$model->save($input);
 
-		return $this->getJWTForUser($input["email"]);
+		return $this->getJWTForUser($input["username"]);
 	}
 
 	/**
@@ -63,12 +61,12 @@ class Auth extends BaseController
 	public function login()
 	{
 		$rules = [
-			"email" => "required|min_length[6]|max_length[50]",
-			"password" => "required|min_length[6]|max_length[30]|password_verify[user.password,user.email]",
+			"username" => "required|min_length[6]|max_length[50]",
+			"password" => "required|min_length[6]|max_length[30]|password_verify[user.password,user.username]",
 		];
 
 		$errors = [
-			"email" => "Invalid login credentials",
+			"username" => "Invalid login credentials",
 			"password" => ["password_verify" => "Invalid password"]
 		];
 
@@ -82,21 +80,21 @@ class Auth extends BaseController
 			);
 		}
 
-		return $this->getJWTForUser($input["email"]);
+		return $this->getJWTForUser($input["username"]);
 	}
 
-	public function getJWTForUser($email)
+	public function getJWTForUser($username)
 	{
 		helper("jwt");
 		try {
 			$model = new UsersModel();
-			$user = $model->getUserByEmail($email);
+			$user = $model->getUserByName($username);
 			unset($user["password"]);
 
 			return $this->respond([
 				"message" => "Access granted",
 				"user"		=> $user,
-				"token"		=> createJWT($email, 0)
+				"token"		=> createJWT($username)
 			]);
 		} catch (\Exception $e) {
 			return $this->fail(
