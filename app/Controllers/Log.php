@@ -19,7 +19,7 @@ class Log extends BaseController {
     /**
      * @api {get} /log Get logs
      * @apiName index
-     * @apiGroup log
+     * @apiGroup Log
      *
      * @apiUse GenericResponse
      */

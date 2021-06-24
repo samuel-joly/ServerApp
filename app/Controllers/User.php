@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Models\UsersModel;
-use App\Models\UserBadgesModel;
 
 class User extends BaseController
 {
@@ -69,9 +68,7 @@ class User extends BaseController
 	 *
 	 * @apiParam {Number} id         The user ID
 	 * @apiParam {String} [username] The user's new name
-	 * @apiParam {String} [email]    The user's new e-mail
 	 * @apiParam {String} [password] The user's new password
-	 * @apiParam {String} [avatar]   The user's new avatar
 	 *
 	 * @apiUse GenericResponse
 	 */
@@ -118,22 +115,18 @@ class User extends BaseController
 	 * @apiGroup Admin
 	 *
 	 * @apiParam {String} username The new user's name
-	 * @apiParam {String} email    The new user's e-mail
 	 * @apiParam {String} password The new user's password
-	 * @apiParam {String} [avatar] The new user's avatar
 	 *
 	 * @apiUse GenericResponse
 	 */
 	public function create()
 	{
 		$rules = [
-			"email"    => "valid_email|min_length[6]|max_length[50]|is_unique[user.email]",
 			"username" => "min_length[3]|max_length[30]",
 			"password" => "min_length[6]|max_length[30]",
 		];
 		
 		$messages = [
-			"email"	=> "6 < size < 50, email should be unique, email should be valid",
 			"username" => "3 < size < 30"
 		];
 
@@ -155,22 +148,4 @@ class User extends BaseController
 		]);
 	}
 
-	/**
-	 * @api {post} /user/:id/badges Get user badges
-	 * @apiName getUserBadges
-	 * @apiGroup Users
-	 *
-	 * @apiParam {Number} id        The user ID
-	 *
-	 * @apiUse GenericResponse
-	 */
-	public function getUserBadges(int $id_user)
-	{
-		$model = new UserBadgesModel();
-		$data = $model->getBadgesFromUser($id_user);
-		return $this->respond([
-			"message"	=> "Badges successfully retrieved",
-			"data"		=> $data
-		]);
-	}
 }

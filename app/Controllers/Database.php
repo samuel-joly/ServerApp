@@ -7,15 +7,39 @@ use App\Models\DatabasesModel;
 use App\Models\TablesModel;
 
 class Database extends BaseController {
+    /**
+     * @apiDefine GenericResponse
+     *
+     * @apiSuccess {String} [message] The endpoint return value
+     * @apiSuccess {Object} [data]    The returned database data
+     *
+     */
     use ResponseTrait;
     protected $databases = ["portfolio"];
 
+
+    /**
+     * @api {get} /database Get Databases
+     * @apiName index
+     * @apiGroup Database
+     *
+     * @apiUse GenericResponse
+     */
     public function index() {
         $model = new DatabasesModel();
         $data = $model->getDatabase();
         return $this->respond(["message" => "Database successfully retrieved", "database" => $data]);
     }
 
+    /**
+     * @api {get} /database/tables Get tables from database
+     * @apiName index
+     * @apiGroup Database
+     *
+     * @apiParam {String} database name
+     *
+     * @apiUse GenericResponse
+     */
     public function getDatabaseTables(){
         $data = $this->getRequest($this->request);
         $database = $data["database"];
@@ -29,6 +53,16 @@ class Database extends BaseController {
         return $this->respond(["message" => "Tables successfully retrieved", "tables" => $data]);
     }
 
+    /**
+     * @api {get} /database/describe Get tables infos from database
+     * @apiName index
+     * @apiGroup Database
+     *
+     * @apiParam {String} database name
+     * @apiParam {String} table name
+     *
+     * @apiUse GenericResponse
+     */
     public function describeTable() {
         $data = $this->getRequest($this->request);
         $database = $data["database"];
@@ -41,6 +75,17 @@ class Database extends BaseController {
         }
     }
 
+
+     /*
+     * @api {get} /database/table/content Get tables content from database
+     * @apiName index
+     * @apiGroup Database
+     *
+     * @apiParam {String} database name
+     * @apiParam {String} table name
+     *
+     * @apiUse GenericResponse
+     */
     public function getTableContent() {
         $data = $this->getRequest($this->request);
         $table = $data["table"];
