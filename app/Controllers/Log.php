@@ -20,6 +20,7 @@ class Log extends BaseController {
      * @api {get} /log Get logs
      * @apiName index
      * @apiGroup Log
+     * @apiParam {Object} A json object with filter as { response_status : 200 , hostname : "125.168.1.26"}
      *
      * @apiUse GenericResponse
      */

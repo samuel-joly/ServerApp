@@ -329,6 +329,19 @@ define({ "api": [
     "title": "Get logs",
     "name": "index",
     "group": "Log",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "A",
+            "description": "<p>json object with filter as { response_status : 200 , hostname : &quot;125.168.1.26&quot;}</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
     "filename": "app/Controllers/Log.php",
     "groupTitle": "Log",
