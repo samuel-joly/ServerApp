@@ -335,9 +335,9 @@
           {
             "group": "Parameter",
             "type": "Object",
-            "optional": false,
-            "field": "A",
-            "description": "<p>json object with filter as { response_status : 200 , hostname : &quot;125.168.1.26&quot;}</p>"
+            "optional": true,
+            "field": "filter",
+            "description": "<p>A json object with filter as { response_status : 200 , hostname : &quot;125.168.1.26&quot;}</p>"
           }
         ]
       }
