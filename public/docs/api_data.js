@@ -56,7 +56,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/auth/login",
+    "url": "/auth",
     "title": "Authenticate user",
     "name": "login",
     "group": "Authentification",
@@ -85,7 +85,7 @@ define({ "api": [
     "groupTitle": "Authentification",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/auth/login"
+        "url": "https://api.laplateforum.fr/auth"
       }
     ],
     "success": {

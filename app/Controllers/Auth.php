@@ -48,7 +48,7 @@ class Auth extends BaseController
 	}
 
 	/**
-	 * @api {post} /auth/login Authenticate user
+	 * @api {post} /auth Authenticate user
 	 * @apiName login
 	 * @apiGroup Authentification
 	 *
@@ -61,7 +61,7 @@ class Auth extends BaseController
 	public function login()
 	{
 		$rules = [
-			"username" => "required|min_length[6]|max_length[50]",
+			"username" => "required|min_length[3]|max_length[50]",
 			"password" => "required|min_length[6]|max_length[30]|password_verify[user.password,user.username]",
 		];
 
