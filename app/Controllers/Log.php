@@ -28,7 +28,7 @@ class Log extends BaseController {
         $model = new LogsModel();
         $data = $this->getRequest($this->request);
 
-        $logs = $model->getLogs($data["service"] ?? "portfolio_log", $data["filter"] ?? null);
+        $logs = $model->getLogs($data["service"] ?? "portfolio_log", $data["filter"] ?? null, $data["limit"] ?? 50);
         return $this->respond($logs);
 
         if(empty($logs)) {

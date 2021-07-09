@@ -32,17 +32,21 @@ class LogsModel extends Model{
         "response_keep_alive",
     ];
 
-    public function getLogs($service, $filter = null) {
+    public function getLogs($service, $filter = null, $limit=50) {
         $this->table= $service;
 
         if(is_null($filter)) {
-            return $this->findAll();
+            if($limit != 0) {
+                return $this->limit($limit)->find();
+            } else {
+                return $this->findAll();
+            }
         }else {
             $query = $this->asArray();
             foreach($filter as $key=>$value) {
                 $query->where($key, $value);
             }
-            return $query->findAll();
+            return $query->limit($limit)->find();
         }
 
     }
