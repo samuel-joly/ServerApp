@@ -338,6 +338,20 @@
             "optional": true,
             "field": "filter",
             "description": "<p>A json object with filter as { response_status : 200 , hostname : &quot;125.168.1.26&quot;}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": true,
+            "field": "limit",
+            "description": "<p>The number of returned logs, return all logs if 0</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "service",
+            "description": "<p>The name of the requested service's logs</p>"
           }
         ]
       }

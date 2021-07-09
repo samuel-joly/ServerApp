@@ -21,6 +21,8 @@ class Log extends BaseController {
      * @apiName index
      * @apiGroup Log
      * @apiParam {Object} [filter] A json object with filter as { response_status : 200 , hostname : "125.168.1.26"}
+     * @apiParam {Int} [limit] The number of returned logs, return all logs if 0
+     * @apiParam {String} [service] The name of the requested service's logs
      *
      * @apiUse GenericResponse
      */
