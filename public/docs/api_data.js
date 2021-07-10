@@ -30,7 +30,7 @@ define({ "api": [
     "groupTitle": "Admin",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/admin/user/"
+        "url": "http://82.66.65.201:5555/admin/user/"
       }
     ],
     "success": {
@@ -85,7 +85,7 @@ define({ "api": [
     "groupTitle": "Authentification",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/auth"
+        "url": "http://82.66.65.201:5555/auth"
       }
     ],
     "success": {
@@ -154,7 +154,7 @@ define({ "api": [
     "groupTitle": "Authentification",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/auth/register"
+        "url": "http://82.66.65.201:5555/auth/register"
       }
     ],
     "success": {
@@ -196,7 +196,7 @@ define({ "api": [
     "groupTitle": "Database",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/database"
+        "url": "http://82.66.65.201:5555/database"
       }
     ],
     "success": {
@@ -244,7 +244,7 @@ define({ "api": [
     "groupTitle": "Database",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/database/tables"
+        "url": "http://82.66.65.201:5555/database/tables"
       }
     ],
     "success": {
@@ -299,7 +299,7 @@ define({ "api": [
     "groupTitle": "Database",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/database/describe"
+        "url": "http://82.66.65.201:5555/database/describe"
       }
     ],
     "success": {
@@ -361,7 +361,7 @@ define({ "api": [
     "groupTitle": "Log",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/log"
+        "url": "http://82.66.65.201:5555/log"
       }
     ],
     "success": {
@@ -409,7 +409,7 @@ define({ "api": [
     "groupTitle": "Users",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/user/:id"
+        "url": "http://82.66.65.201:5555/user/:id"
       }
     ],
     "success": {
@@ -444,7 +444,7 @@ define({ "api": [
     "groupTitle": "Users",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/user"
+        "url": "http://82.66.65.201:5555/user"
       }
     ],
     "success": {
@@ -492,7 +492,7 @@ define({ "api": [
     "groupTitle": "Users",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/user/:id"
+        "url": "http://82.66.65.201:5555/user/:id"
       }
     ],
     "success": {
@@ -554,7 +554,7 @@ define({ "api": [
     "groupTitle": "Users",
     "sampleRequest": [
       {
-        "url": "https://api.laplateforum.fr/user/:id"
+        "url": "http://82.66.65.201:5555/user/:id"
       }
     ],
     "success": {
