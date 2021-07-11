@@ -70,14 +70,14 @@ class Auth extends BaseController
 			"password" => ["password_verify" => "Invalid password"]
 		];
 
-		$input = $this->getRequest($this->request);
+		$input = $this->getRequest($this->request)["data"];
+		//$input =["username"=>"administrator", "password"=>"administrator"];
 
 		if (!$this->validateRequest($input, $rules, $errors)) {
 			return $this->fail(
 				[
 					"errors" => [
 						$this->validator->getErrors(),
-						$input
 					]
 				]
 			);
