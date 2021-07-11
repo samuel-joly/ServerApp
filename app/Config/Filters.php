@@ -29,7 +29,6 @@ class Filters extends BaseConfig
 			'JWTAuth' => ['except' => ['/', 'auth', 'auth/*']],
 		],
 		'after'  => [
-			'cors',
 			//' honeypot'
 		],
 	];

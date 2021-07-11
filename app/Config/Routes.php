@@ -32,16 +32,16 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$routes->post('auth/register', 'Auth::register');
-$routes->options('auth', 'Auth::options');
-$routes->post('auth', 'Auth::login');
+$routes->post('auth/register', 'Auth::register', ['filter' => 'cors']);
+$routes->options('auth', 'Auth::options', ['filter' => 'cors']);
+$routes->post('auth', 'Auth::login', ['filter' => 'cors']);
 
-$routes->add('helper/route', 'RouteDisplay::getRoutes');
-$routes->get('log', 'Log::index');
-$routes->get('database', 'Database::index');
-$routes->get('database/describe', 'Database::describeTable');
-$routes->get('database/tables', 'Database::getDatabaseTables');
-$routes->get('database/table/content', 'Database::getTableContent');
+$routes->add('helper/route', 'RouteDisplay::getRoutes', ['filter' => 'cors']);
+$routes->get('log', 'Log::index', ['filter' => 'cors']);
+$routes->get('database', 'Database::index', ['filter' => 'cors']);
+$routes->get('database/describe', 'Database::describeTable', ['filter' => 'cors']);
+$routes->get('database/tables', 'Database::getDatabaseTables', ['filter' => 'cors']);
+$routes->get('database/table/content', 'Database::getTableContent', ['filter' => 'cors']);
 
 /**
  * --------------------------------------------------------------------
