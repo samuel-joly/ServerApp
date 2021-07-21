@@ -38,6 +38,7 @@ $routes->post('auth', 'Auth::login', ['filter' => 'cors']);
 
 $routes->add('helper/route', 'RouteDisplay::getRoutes', ['filter' => 'cors']);
 $routes->get('log', 'Log::index', ['filter' => 'cors']);
+$routes->get('log/stat', 'Log::stats', ['filter' => 'cors']);
 $routes->get('database', 'Database::index', ['filter' => 'cors']);
 $routes->get('database/describe', 'Database::describeTable', ['filter' => 'cors']);
 $routes->get('database/tables', 'Database::getDatabaseTables', ['filter' => 'cors']);

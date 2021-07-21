@@ -43,4 +43,17 @@ class Log extends BaseController {
         ]);
     }
 
+
+    public function stats() {
+        $model = new LogsModel();
+        $data = $this->getRequest($this->request);
+
+        switch($data["type"]) {
+            case "visit":
+                    $logs = $model->countLogsBasedOnIP($data["service"]);
+                    return $this->respond(["message" => "Data successfully retrieved", "data" => $logs]);
+                break;
+        }
+    }
+
 }

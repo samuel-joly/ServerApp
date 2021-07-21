@@ -29,7 +29,7 @@ class JWTAuth implements FilterInterface
         } catch (\Exception $e) {
             return Services::response()
                 ->setJSON([
-                    "error" => validateJWT($encodedToken)
+                    "error" => $authHeader
                 ])
                 ->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED);
         }
