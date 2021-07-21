@@ -53,13 +53,14 @@ class LogsModel extends Model{
 
     public function countLogsBasedOnIP($service) {
         $this->table = $service;
-        $logs = $this->query("select count(hostname) from portfolio_log where request_url='GET / HTTP/1.1' group by DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
+        $logs = $this->query("select count(hostname) from $service where request_url='GET / HTTP/1.1' group by
+DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
         return $logs;
     }
 
     public function countErrorLogs($service) {
         $this->table = $service;
-        $logs = $this->query("select count(request_status) from portfolio_log where request_status >= 400 AND request_status < 500 AND request_url != 'GET /favicon.ico HTTP/1.1' AND request_url != 'GET / HTTP/1.1' group by DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
+        $logs = $this->query("select count(request_status) from $service where request_status >= 400 AND request_status < 500 AND request_url != 'GET /favicon.ico HTTP/1.1' AND request_url != 'GET / HTTP/1.1' group by DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
         return $logs;
     }
 
