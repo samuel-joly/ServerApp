@@ -53,6 +53,10 @@ class Log extends BaseController {
                     $logs = $model->countLogsBasedOnIP($data["service"]);
                     return $this->respond(["message" => "Data successfully retrieved", "data" => $logs]);
                 break;
+            case "error":
+                    $logs = $model->countErrorLogs($data["service"]);
+                    return $this->respond(["message" => "Data successfully retrieved", "data" => $logs]);
+                break;
         }
     }
 
