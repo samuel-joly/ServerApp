@@ -64,4 +64,26 @@ DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
         return $logs;
     }
 
+    public function getUserAgent($service, $browser) {
+        $this->table = $service;
+        switch($browser) {
+            case "Firefox":
+                    $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Firefox.?'")->getResult();
+                break;
+
+            case "Chrome":
+                $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Chrome.?'")->getResult();
+                break;
+
+            case "Safari":
+                    $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Macintosh|Iphone).+Safari.?'")->getResult();
+                break;
+
+            case "Edge":
+                $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Edge.?'")->getResult();
+                break;
+        }
+        return $logs;
+    }
+
 }

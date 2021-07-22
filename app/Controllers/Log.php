@@ -69,4 +69,12 @@ class Log extends BaseController {
         return $this->respond(["message" => "Data successfully retrieved", "data" => $retLog]);
     }
 
+    public function getUserAgent() {
+        $model = new LogsModel();
+        $data = $this->getRequest($this->request);
+        $logs = $model->getUserAgent($data["service"], $data["browser"]);
+        return $this->respond(["message" => "Data successfully retrieved", "data" => $logs]);
+
+    }
+
 }
