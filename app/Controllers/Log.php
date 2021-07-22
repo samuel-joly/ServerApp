@@ -54,18 +54,19 @@ class Log extends BaseController {
                 break;
             case "error":
                     $logs = $model->countErrorLogs($data["service"]);
-                    return $this->respond(["message" => "Data successfully retrieved", "data" => $logs]);
                 break;
         }
 
         $months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         $retLog = [0,0,0,0,0,0,0,0,0,0,0,0];
-        for($i=0; $i < count($months); $i++) {
-            if(get_object_vars($logs[$i])["DATE_FORMAT(from_unixtime(date_of_request), '%M')"] == $months[$i]) {
-                $retLog[$i] = get_object_vars($logs[$i])["count(hostname)"];
+        for($i=0; $i < count($logs); $i++) {
+            for($j=0; $j < count($months); $j++) {
+                if(get_object_vars($logs[$i])["DATE_FORMAT(from_unixtime(date_of_request), '%M')"] == $months[$j]) {
+                    $retLog[$j] = get_object_vars($logs[$i])["count(hostname)"];
+                }
             }
-            return $this->respond(["message" => "Data successfully retrieved", "data" => $retLog]);
         }
+        return $this->respond(["message" => "Data successfully retrieved", "data" => $retLog]);
     }
 
 }
