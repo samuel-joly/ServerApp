@@ -68,23 +68,23 @@ DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
         $this->table = $service;
         switch($browser) {
             case "Firefox":
-                    $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Firefox.?'")->getResult();
+                    $logs = $this->query("select count(user_agent) as '$browser' from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Firefox.?'")->getResult();
                 break;
 
             case "Chrome":
-                $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Chrome.?'")->getResult();
+                $logs = $this->query("select count(user_agent) as '$browser' from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Chrome.?'")->getResult();
                 break;
 
             case "Safari":
-                    $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Macintosh|Iphone).+Safari.?'")->getResult();
+                    $logs = $this->query("select count(user_agent) as '$browser' from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Macintosh|Iphone).+Safari.?'")->getResult();
                 break;
 
             case "Edge":
-                $logs = $this->query("select count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Edge.?'")->getResult();
+                $logs = $this->query("select count(user_agent) as '$browser' from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+Edge.?'")->getResult();
                 break;
 
             default :
-                $logs = $this->query("select user_agent, count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP 'Mozilla/5.0\((\d+)?(Linux|Window|Macintosh|Iphone)\).+(Edge|Chrome|Safari|Firefox).?' group by user_agent REGEXP 'Mozilla/5.0\((\d+)?(Linux|Window|Macintosh|Iphone)\).+(Edge|Chrome|Safari|Firefox).?'")->getResult();
+                $logs = [$this->getUserAgent($service, "Firefox")[0],$this->getUserAgent($service, "Chrome")[0],$this->getUserAgent($service, "Edge")[0],$this->getUserAgent($service, "Safari")[0]];
                 break;
         }
         return $logs;
