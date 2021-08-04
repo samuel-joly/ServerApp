@@ -84,7 +84,7 @@ DATE_FORMAT(from_unixtime(date_of_request), '%M')")->getResult();
                 break;
 
             default :
-                $logs = $this->query("select user_agent, count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP '.+(Linux|Window|Macintosh|Iphone).+(Edge|Chrome|Safari|Firefox).?' group by user_agent")->getResult();
+                $logs = $this->query("select user_agent, count(user_agent) from portfolio_log where request_url = 'GET / HTTP/1.1' and user_agent REGEXP 'Mozilla/5.0\((\d+)?(Linux|Window|Macintosh|Iphone)\).+(Edge|Chrome|Safari|Firefox).?' group by user_agent REGEXP 'Mozilla/5.0\((\d+)?(Linux|Window|Macintosh|Iphone)\).+(Edge|Chrome|Safari|Firefox).?'")->getResult();
                 break;
         }
         return $logs;
