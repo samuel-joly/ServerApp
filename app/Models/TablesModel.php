@@ -55,6 +55,6 @@ class TablesModel extends Model{
         $this->custom["database"] = $database;
         $db = \Config\Database::connect($this->custom);
 
-        return $db->query("Select * from $table")->getResult();
+        return $db->query("SELECT * from ".$table)->getResult();
     }
 }
