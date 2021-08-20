@@ -9,7 +9,7 @@ class DatabasesModel extends Model{
     protected $allowedFields = [
         "database_name",
     ];
-    protected $table = 'database';
+    protected $table = 'web_app';
 
 
     public function getDatabase() {
